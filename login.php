@@ -80,7 +80,7 @@
                     <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
                         <div class="card-body text-center">
                             <div>
-                                <img src="/assets/admin-template/img/logo-custom.png" alt="SMK" srcset="" style="height:auto; width:250px;">
+                                <img src="/assets/admin-template/img/logo-custom.png" alt="SMK" style="height:auto; width:250px;">
                             </div>
                         </div>
                     </div>
