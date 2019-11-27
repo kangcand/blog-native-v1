@@ -41,8 +41,9 @@ if (!$_SESSION['login']) {
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">Data Kategori
-                                    <button class="btn btn-outline-danger btn-sm float-right">Tambah</button>
+                                    <button class="btn btn-outline-danger btn-sm float-right" data-toggle="modal" data-target=".kategori">Tambah</button>
                                 </div>
+                                <?php include 'create.php'; ?>
                                 <div class="card-body">
                                     <div class="table-responsive">
                                         <table class="table" id="data-table">
@@ -51,6 +52,7 @@ if (!$_SESSION['login']) {
                                                     <th>No</th>
                                                     <th>Nama Kategori</th>
                                                     <th>Slug</th>
+                                                    <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -63,7 +65,15 @@ if (!$_SESSION['login']) {
                                                         <td><?php echo $no++ ?></td>
                                                         <td><?php echo $data['nama']; ?></td>
                                                         <td><?php echo $data['slug']; ?></td>
+
+                                                        <td>
+                                                            <a href="/admin/kategori/proses.php?id=<?php echo $data['id']; ?>&aksi=delete" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Delete</a> |
+                                                            <a href="/admin/kategori/show.php?id=<?php echo $data['id']; ?>" class="btn btn-sm btn-warning">Show</a> |
+                                                            <button type="button" class="btn btn-sm btn-success btn-outline" data-toggle="modal" data-target=".kategori-<?php echo $data['id']; ?>">Edit</button>
+
+                                                        </td>
                                                     </tr>
+                                                    <?php include 'edit.php'; ?>
                                                 <?php } ?>
                                             </tbody>
                                         </table>
