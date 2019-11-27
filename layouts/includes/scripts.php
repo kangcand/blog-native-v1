@@ -8,3 +8,10 @@
  <!-- <script src="/assets/admin-template/node_modules/chart.js/dist/Chart.min.js"></script> -->
  <script src="/assets/admin-template/node_modules/@coreui/coreui-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js"></script>
  <!-- <script src="/assets/admin-template/js/main.js"></script> -->
+ <!-- DataTables -->
+ <script src="/assets/DataTables/datatables.min.js"></script>
+ <script>
+     $(document).ready(function() {
+         $('#data-table').DataTable();
+     });
+ </script>

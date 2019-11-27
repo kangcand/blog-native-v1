@@ -1,7 +1,7 @@
 <?php
 class Database
 {
-    public $host = "localhost", $user = "root", $pass = 123, $db = "blog";
+    public $host = "localhost", $user = "root", $pass = 123, $db = "blog-v1";
     public $koneksi;
     public function __construct()
     {
@@ -20,3 +20,8 @@ class Database
 }
 
 $db = new Database();
+
+// kategori
+include 'kategori.php';
+// artikel
+include 'artikel.php';
