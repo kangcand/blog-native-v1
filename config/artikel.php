@@ -42,7 +42,9 @@ class Artikel extends Database
     {
         $data_artikel = mysqli_query(
             $this->koneksi,
-            "select * from artikel where id='$id'"
+            "SELECT artikel.id, artikel.judul, artikel.foto,artikel.konten, artikel.tgl, artikel.slug, kategori.nama as nama_kategori, 
+            users.nama as nama_penulis FROM ((artikel JOIN kategori ON kategori.id = artikel.id_kategori)
+            JOIN users ON users.id = artikel.id_user) where artikel.id='$id'"
         );
         return $data_artikel;
     }

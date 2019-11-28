@@ -6,7 +6,7 @@ if (!$_SESSION['login']) {
             window.location = '/login.php'
         </script>";
 } else {
-    include('../config/database.php');
+    include('../config/koneksi.php');
     $user = new Database();
     $user = mysqli_query(
         $user->koneksi,

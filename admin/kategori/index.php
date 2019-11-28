@@ -6,7 +6,7 @@ if (!$_SESSION['login']) {
             window.location = '/login.php'
         </script>";
 } else {
-    include('../../config/database.php');
+    include('../../config/koneksi.php');
     $user = new Database();
     $user = mysqli_query(
         $user->koneksi,
@@ -65,15 +65,15 @@ if (!$_SESSION['login']) {
                                                         <td><?php echo $no++ ?></td>
                                                         <td><?php echo $data['nama']; ?></td>
                                                         <td><?php echo $data['slug']; ?></td>
-
                                                         <td>
                                                             <a href="/admin/kategori/proses.php?id=<?php echo $data['id']; ?>&aksi=delete" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin ?')">Delete</a> |
-                                                            <a href="/admin/kategori/show.php?id=<?php echo $data['id']; ?>" class="btn btn-sm btn-warning">Show</a> |
+                                                            <button type="button" class="btn btn-sm btn-warning btn-outline" data-toggle="modal" data-target=".kategori-show-<?php echo $data['id']; ?>">Show</button>
                                                             <button type="button" class="btn btn-sm btn-success btn-outline" data-toggle="modal" data-target=".kategori-<?php echo $data['id']; ?>">Edit</button>
 
                                                         </td>
                                                     </tr>
                                                     <?php include 'edit.php'; ?>
+                                                    <?php include 'show.php'; ?>
                                                 <?php } ?>
                                             </tbody>
                                         </table>

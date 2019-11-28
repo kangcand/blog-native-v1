@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config/database.php';
+include 'config/koneksi.php';
 if (isset($_POST['btnLogin'])) {
     $db = new Database();
     $email = $_POST['email'];

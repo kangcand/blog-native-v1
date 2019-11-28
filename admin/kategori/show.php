@@ -1,66 +1,33 @@
-<?php
-session_start();
-if (!$_SESSION['login']) {
-    echo "<script type='text/javascript'>
-        alert('Maaf anda harus login terlebih dahulu!');
-            window.location = '/login.php'
-        </script>";
-} else {
-    include('../../config/database.php');
-    $user = new Database();
-    $user = mysqli_query(
-        $user->koneksi,
-        "select * from users where password='$_SESSION[login]'"
-    );
-    // var_dump($_SESSION['login']);
-    $user = mysqli_fetch_array($user); ?>
-
-    <!-- Header -->
-    <?php include('../../layouts/includes/head.php') ?>
-    <!-- End Header -->
-
-    <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
-        <!-- Navbar -->
-        <?php include('../../layouts/includes/navbar.php') ?>
-        <!-- End Navbar -->
-        <div class="app-body">
-            <!-- Sidebar -->
-            <?php include('../../layouts/includes/sidebar.php') ?>
-            <!-- End Sidebar -->
-            <!-- Main Content -->
-            <main class="main">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">Home</li>
-                    <li class="breadcrumb-item">
-                        <a href="#">Admin</a>
-                    </li>
-                    <li class="breadcrumb-item active">Dashboard</li>
-                    <!-- Breadcrumb Menu-->
-                    <li class="breadcrumb-menu d-md-down-none">
-                        <div class="btn-group" role="group" aria-label="Button group">
-                            <a class="btn" href="#">
-                                <i class="icon-speech"></i>
-                            </a>
-                            <a class="btn" href="./">
-                                <i class="icon-graph"></i>  Dashboard</a>
-                            <a class="btn" href="#">
-                                <i class="icon-settings"></i>  Settings</a>
-                        </div>
-                    </li>
-                </ol>
-            </main>
-            <!-- End Main Conten -->
-
+<?php foreach ($kategori->show($data['id']) as $data) {
+    $id = $data['id'];
+    $nama = $data['nama'];
+}
+?>
+<div class="modal fade kategori-show-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="/admin/kategori/proses.php?aksi=update" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Show kategori </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" name="nama" value="<?php echo $data['nama']; ?>" class="form-control" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Slug Kategori</label>
+                        <input type="text" name="nama" value="<?php echo $data['slug']; ?>" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info btn-block" data-dismiss="modal">Close</button>
+                </div>
+            </form>
         </div>
-        <!-- Footer -->
-        <?php include('../../layouts/includes/footer.php') ?>
-        <!-- End Footer -->
-        <!-- CoreUI and necessary plugins-->
-        <!-- Scripts -->
-        <?php include('../../layouts/includes/scripts.php') ?>
-        <!-- End Scripts -->
-    </body>
-
-    </html>
-<?php
-} ?>
+    </div>
+</div>

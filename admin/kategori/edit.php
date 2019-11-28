@@ -1,9 +1,9 @@
-<?php foreach ($kategori->edit($data['id']) as $data) {
-    $id = $data['id'];
-    $nama = $data['nama'];
+<?php foreach ($kategori->edit($data['id']) as $xx) {
+    $id = $xx['id'];
+    $nama = $xx['nama'];
 }
 ?>
-<div class="modal fade kategori-<?php echo $data['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade kategori-<?php echo $xx['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form action="/admin/kategori/proses.php?aksi=update" method="POST">
@@ -17,7 +17,7 @@
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div class="form-group">
                         <label>Nama Kategori</label>
-                        <input type="text" name="nama" value="<?php echo $data['nama']; ?>" class="form-control" required>
+                        <input type="text" name="nama" value="<?php echo $xx['nama']; ?>" class="form-control" required>
                     </div>
                 </div>
                 <div class="modal-footer">

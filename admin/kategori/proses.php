@@ -1,5 +1,5 @@
 <?php
-include('../../config/database.php');
+include('../../config/koneksi.php');
 $kategori = new Kategori();
 $aksi = $_GET['aksi'];
 if (isset($_POST['save'])) {
