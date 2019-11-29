@@ -8,12 +8,7 @@ if (!$_SESSION['login']) {
 } else {
     include('../../config/koneksi.php');
     $user = new Database();
-    $user = mysqli_query(
-        $user->koneksi,
-        "select * from users where password='$_SESSION[login]'"
-    );
-    // var_dump($_SESSION['login']);
-    $user = mysqli_fetch_array($user); ?>
+    ?>
 
     <!-- Header -->
     <?php include('../../layouts/includes/head.php') ?>
@@ -73,15 +68,14 @@ if (!$_SESSION['login']) {
                                             <label for="">Kategori Artikel</label>
                                             <select name="id_kategori" id="" class="form-control">
                                                 <?php
-                                                    $artikel = new Artikel();
-                                                    foreach ($artikel->get_kategori() as $data) {
+                                                    $kategori = new Artikel();
+                                                    foreach ($kategori->get_kategori() as $data) {
                                                         ?>
                                                     <option value="<?php echo $data['id'] ?>"><?php echo $data['nama'] ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <input type="hidden" name="id_user" value="<?php echo $user['id'] ?>">
                                             <button type="submit" name="save" class="btn btn-primary btn-block">Simpan Data</button>
                                         </div>
                                     </form>

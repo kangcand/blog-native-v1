@@ -1,15 +1,25 @@
 <?php
+session_start();
 include '../../config/koneksi.php';
 $artikel = new Artikel();
 $aksi = $_GET['aksi'];
+// Memanggil User login yang akan dijadi penulis
+$user = new Database();
+$user = mysqli_query(
+    $user->koneksi,
+    "select * from users where password='$_SESSION[login]'"
+);
+$user = mysqli_fetch_array($user);
+
 if (isset($_POST['save'])) {
+
     $id = $_POST['id'];
     $judul = $_POST['judul'];
     $konten = $_POST['konten'];
     $tgl = date('Y-m-d');
     $slug = preg_replace('/[^a-z0-9]+/i', '-', trim(strtolower($_POST["judul"])));
     $id_kategori = $_POST['id_kategori'];
-    $id_user = $_POST['id_user'];
+    $id_user = $user['id'];
     $fotoLama = $_POST['fotoLama'];
     // upload image
     function upload()
@@ -31,7 +41,7 @@ if (isset($_POST['save'])) {
         // }
         if ($sizeFoto > 2400000) {
             echo "<script>
-        alert('Maaf file yang anda masukan terlalu besar!');
+        alert('Maaf file yang anda masukan tidak boleh melebihi 2.4mb!');
         </script>";
             return false;
         }
@@ -43,6 +53,7 @@ if (isset($_POST['save'])) {
         }
         // mengubah nama foto
         $namaFoto = uniqid();
+        // 5328367236273627.png
         $namaFoto .= ".";
         $namaFoto .= $ekstensiFoto;
         move_uploaded_file($tmpFoto, 'img/' . $namaFoto);
@@ -54,7 +65,7 @@ if (isset($_POST['save'])) {
         $foto = upload();
     }
 }
-// var_dump($_POST);
+// var_dump($id_user);
 // var_dump($_FILES);
 // var_dump(upload());
 if ($aksi == "create") {

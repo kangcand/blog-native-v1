@@ -69,7 +69,7 @@ if (!$_SESSION['login']) {
                                         }
                                         // var_dump($artikel);                                    
                                         ?>
-                                    <p align="right"> <i class="icons cui-note"></i> Dibuat : <?php echo date('d F Y', strtotime($data['tgl'])) ?></p>
+                                    <p align="right"> <i class="icons cui-note"></i> Dibuat : <?php echo date('d F Y', strtotime($tgl)) ?></p>
                                     <center>
                                         <h2><label class="cui-date"><?php echo $judul ?></label></h2>
                                         <img src="/admin/artikel/img/<?php echo $foto; ?>" alt="" style="width:600px; height:350px;">

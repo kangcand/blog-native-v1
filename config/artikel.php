@@ -6,7 +6,7 @@ class Artikel extends Database
     {
         $data_artikel = mysqli_query(
             $this->koneksi,
-            "SELECT artikel.id, artikel.judul, artikel.foto, 
+            "SELECT artikel.id, artikel.judul,artikel.judul, artikel.foto, 
             artikel.tgl, artikel.slug, kategori.nama as nama_kategori, 
             users.nama FROM ((artikel JOIN kategori ON kategori.id = 
             artikel.id_kategori) 
@@ -17,9 +17,9 @@ class Artikel extends Database
     }
     public function get_kategori()
     {
-        $kategori = mysqli_query($this->koneksi, "SELECT * FROM kategori");
+        $data_kategori = mysqli_query($this->koneksi, "SELECT * FROM kategori");
         // var_dump($kategori);
-        return $kategori;
+        return $data_kategori;
     }
     // Menambah Data
     public function create(
