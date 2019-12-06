@@ -25,3 +25,6 @@ $db = new Database();
 include 'kategori.php';
 // artikel
 include 'artikel.php';
+
+// artikel
+include 'frontend.php';

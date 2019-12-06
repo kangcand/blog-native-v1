@@ -63,7 +63,6 @@ if (!$_SESSION['login']) {
                                             <thead>
                                                 <th>No</th>
                                                 <th>Judul</th>
-                                                <th>Konten</th>
                                                 <th>Kategori</th>
                                                 <th>Penulis</th>
                                                 <th>Foto</th>

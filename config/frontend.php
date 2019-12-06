@@ -31,8 +31,15 @@ class Frontend extends Database
             $this->koneksi,
             "SELECT artikel.id, artikel.judul, artikel.foto,artikel.konten, artikel.tgl, artikel.slug, kategori.nama as nama_kategori, 
             users.nama as nama_penulis FROM ((artikel JOIN kategori ON kategori.id = artikel.id_kategori)
-            JOIN users ON users.id = artikel.id_user) where artikel.id='$slug'"
+            JOIN users ON users.id = artikel.id_user) where artikel.slug='$slug'"
         );
         return $data_artikel;
+    }
+
+    public function get_kategori()
+    {
+        $data_kategori = mysqli_query($this->koneksi, "SELECT * FROM kategori");
+        // var_dump($kategori);
+        return $data_kategori;
     }
 }
